@@ -1,3 +1,6 @@
+
+int lampeggi = 0;
+
 void setup() {
   // put your setup cod here, to run once;
 pinMode(13,OUTPUT); //verde
@@ -6,6 +9,8 @@ pinMode(10,OUTPUT); //rosso
 pinMode(5,OUTPUT); //verde
 pinMode(4,OUTPUT); //giallo
 pinMode(2,OUTPUT); //rosso
+numLampeggi();
+
 }
 
 void loop() {
@@ -44,4 +49,13 @@ void lampeggia(int led, int rit, int c)
     digitalWrite(led,HIGH);
   }
 }
+
+void numLampeggi()
+{
+  Serial.begin(9600);
+  Serial.print("Quanti lampeggi verdi vuoi?");
+  while(Serial.available()==0){};
+  lampeggi = Serial.readString().toInt();
+}
+
 
